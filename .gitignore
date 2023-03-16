@@ -17,3 +17,5 @@ yarn-error.log
 _ide_helper.php
 .env.testing
 .github
+
+.idea
