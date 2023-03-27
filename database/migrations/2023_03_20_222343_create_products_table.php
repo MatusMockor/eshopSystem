@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->double('price');
             $table->foreignId('category_id');
+            $table->foreignId('roles_id');
         });
     }
 
