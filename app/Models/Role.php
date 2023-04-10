@@ -22,10 +22,19 @@ class Role extends Model
 {
     use HasFactory;
 
+    const ADMIN_ROLE = 'admin';
+
     protected $fillable = [
         'name',
         'slug',
     ];
+
+    public static function allRoles(): array
+    {
+        return [
+            self::ADMIN_ROLE,
+        ];
+    }
 
     public function user(): HasMany
     {
