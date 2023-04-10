@@ -4,14 +4,26 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * @var string  $name
- * @var string  $email
- * @var boolean $admin
+ * App\Models\User
+ *
+ * @var string                               $name
+ * @var string                               $email
+ * @var Role|null                            $role
+ * @property int                             $id
+ * @property string                          $name
+ * @property string                          $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string                          $password
+ * @property int|null                        $role_id
+ * @property string|null                     $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  */
 class User extends Authenticatable
 {
@@ -47,4 +59,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
