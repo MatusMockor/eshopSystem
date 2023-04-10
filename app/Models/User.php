@@ -12,13 +12,12 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * App\Models\User
  *
- * @var string                               $name
- * @var string                               $email
- * @var Role|null                            $role
+ * @property  string                         $name
+ * @property  string                         $email
+ * @property  Role|null                      $role
  * @property int                             $id
  * @property string                          $first_name
  * @property string                          last_name
- * @property string                          $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string                          $password
  * @property int|null                        $role_id
