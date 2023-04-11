@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Services\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,6 +28,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected UserPresenter $presenter;
 
     /**
      * The attributes that are mass assignable.
@@ -68,5 +71,14 @@ class User extends Authenticatable
     public function hasRole(array $roles): bool
     {
         return in_array($this->role?->name, Role::allRoles());
+    }
+
+    public function present(): UserPresenter
+    {
+        if (!isset($this->presenter)) {
+            $this->presenter = new UserPresenter($this);
+        }
+
+        return $this->presenter;
     }
 }
