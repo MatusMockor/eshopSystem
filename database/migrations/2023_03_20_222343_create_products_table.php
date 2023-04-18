@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->double('price');
-            $table->foreignId('category_id');
-            $table->foreignId('roles_id');
+            $table->foreignId('category_id')->nullable();
         });
     }
 
