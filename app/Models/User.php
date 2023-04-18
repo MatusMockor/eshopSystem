@@ -75,10 +75,7 @@ class User extends Authenticatable
 
     public function present(): UserPresenter
     {
-        if (!isset($this->presenter)) {
-            $this->presenter = new UserPresenter($this);
-        }
-
+        $this->presenter = isset($this->presenter) ?: new UserPresenter($this);
         return $this->presenter;
     }
 }
