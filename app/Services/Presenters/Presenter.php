@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presenter
 {
-    protected Model $model;
-
-    public function __construct(Model $model)
+    public function __construct(protected Model $model)
     {
-        $this->model = $model;
     }
 
     //MAGIC PHP METHOD
