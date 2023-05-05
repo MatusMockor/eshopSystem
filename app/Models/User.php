@@ -29,7 +29,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected UserPresenter $presenter;
+    protected ?UserPresenter $presenter = null;
 
     /**
      * The attributes that are mass assignable.
@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function present(): UserPresenter
     {
-        $this->presenter = isset($this->presenter) ?: new UserPresenter($this);
+        $this->presenter = $this->presenter ?: new UserPresenter($this);
         return $this->presenter;
     }
 }
