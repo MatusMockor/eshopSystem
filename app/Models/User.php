@@ -70,7 +70,11 @@ class User extends Authenticatable
 
     public function hasRole(array $roles): bool
     {
-        return in_array($this->role?->name, Role::allRoles());
+        $hasRole = array_filter($roles, function ($role) {
+            return in_array($role, Role::allRoles()) ?? false;
+        });
+
+        return (bool)$hasRole;
     }
 
     public function present(): UserPresenter
