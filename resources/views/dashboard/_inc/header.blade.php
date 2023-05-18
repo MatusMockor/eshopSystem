@@ -19,6 +19,7 @@
                         <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
                     </a>
                 </div>
+                <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white md:text-3xl lg:text-3xl">@yield('title', 'Dashboard')</h1>
                 <div class="flex items-center">
                     <div class="flex items-center ml-3">
                         <div>
