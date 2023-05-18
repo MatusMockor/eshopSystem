@@ -15,7 +15,7 @@ class AuthenticateRoles
      */
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
-        if (!auth()->user()->hasRole($roles)) {
+        if (!user()->hasRole($roles)) {
             throw new AuthenticationException(
                 'Unauthenticated.', [], back()->withErrors(["Doesn't have permission !"])
             );
