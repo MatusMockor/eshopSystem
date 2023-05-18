@@ -5,4 +5,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'categories', 'middleware' => 'roles:admin'], function () {
     Route::get('/', [CategoryController::class, 'index'])->name('dashboard.categories.index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('dashboard.categories.create');
 });

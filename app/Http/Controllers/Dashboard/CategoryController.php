@@ -14,4 +14,9 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function create()
+    {
+        return view('dashboard.category.create');
+    }
 }
