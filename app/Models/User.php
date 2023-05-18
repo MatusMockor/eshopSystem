@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function present(): UserPresenter
     {
-        $this->presenter = $this->presenter ?: new UserPresenter($this);
+        $this->presenter = $this->presenter ?? new UserPresenter($this);
         return $this->presenter;
     }
 }
