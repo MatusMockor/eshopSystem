@@ -22,3 +22,14 @@ it('slug changed when category name updated', function () {
     $category->refresh();
     expect($category->slug)->toBe(Str::slug($newName));
 });
+
+it('user can not create category with exists name', function () {
+    login();
+    $name = 'Category name';
+    post(route('dashboard.categories.store'), [
+        'name' => $name
+    ]);
+    post(route('dashboard.categories.store'), [
+        'name' => $name
+    ])->assertSessionHasErrors();
+});
