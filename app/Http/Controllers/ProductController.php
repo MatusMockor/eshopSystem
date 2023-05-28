@@ -11,7 +11,7 @@ class ProductController extends Controller
         $products = Product::latest()->paginate();
 
         return view('dashboard.product.index', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 }
