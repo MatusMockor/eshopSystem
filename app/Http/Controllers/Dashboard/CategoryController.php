@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $categories = Category::latest()->paginate();
         return view('dashboard.category.index', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -22,7 +22,7 @@ class CategoryController extends Controller
         return view('dashboard.category.create');
     }
 
-    public function store(StoreCategoryRequest $request): RedirectResponse
+    public function store(StoreCategoryRequest $request) : RedirectResponse
     {
         Category::create($request->validated());
 
@@ -32,11 +32,11 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('dashboard.category.edit', [
-            'category' => $category
+            'category' => $category,
         ]);
     }
 
-    public function update(StoreCategoryRequest $request, Category $category): RedirectResponse
+    public function update(StoreCategoryRequest $request, Category $category) : RedirectResponse
     {
         $category->update($request->validated());
 
