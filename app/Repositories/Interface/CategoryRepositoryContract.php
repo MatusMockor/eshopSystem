@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 interface CategoryRepositoryContract
 {
-    public function create(array $data);
+    public function create(array $data) : void;
 }
