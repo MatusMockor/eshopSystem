@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             categoryName: this.category.name ?? '',
-            buttonName: this.category ? 'Edit' : 'Add',
+            buttonName: this.category.name ? 'Edit' : 'Add',
         }
     }
 }
