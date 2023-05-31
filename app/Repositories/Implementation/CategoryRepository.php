@@ -11,4 +11,9 @@ class CategoryRepository implements CategoryRepositoryContract
     {
         Category::create($data);
     }
+
+    public function update(Category $category, array $data) : void
+    {
+        $category->update($data);
+    }
 }

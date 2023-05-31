@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
     public function update(StoreCategoryRequest $request, Category $category) : RedirectResponse
     {
-        $category->update($request->validated());
+        $this->categoryRepo->update($category, $request->validated());
 
         return to_route('dashboard');
     }
