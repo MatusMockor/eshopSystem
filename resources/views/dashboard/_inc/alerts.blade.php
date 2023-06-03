@@ -24,3 +24,7 @@
         </button>
     </div>
 @endforeach
+
+<flash-message
+    message="{{session('success')}}"
+></flash-message>
