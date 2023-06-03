@@ -1,4 +1,4 @@
-<template id="app">
+<template>
     <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-6 group">
             <input type="text" name="name" id="name"
