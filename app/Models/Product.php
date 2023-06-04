@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property string $name
- * @property string $slug
- * @property string $description
- * @property double $price
+ * @property string  $name
+ * @property string  $slug
+ * @property string  $description
+ * @property double  $price
+ * @property integer $quantity
  */
 class Product extends Model
 {
@@ -32,6 +33,7 @@ class Product extends Model
         'slug',
         'description',
         'price',
+        'quantity',
     ];
 
     public static function getStatuses() : array
