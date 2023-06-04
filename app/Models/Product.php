@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Collection;
 
 /**
- * @property string      $name
- * @property string      $slug
- * @property string|null $description
- * @property double      $price
- * @property integer     $quantity
+ * @property string          $name
+ * @property string          $slug
+ * @property string|null     $description
+ * @property double          $price
+ * @property integer         $quantity
+ * @property Collection|null $images
  */
 class Product extends Model
 {
@@ -43,5 +46,10 @@ class Product extends Model
             self::STATUS_INACTIVE,
             self::STATUS_SOLD_OUT,
         ];
+    }
+
+    public function images() : MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
