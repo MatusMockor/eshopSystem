@@ -2,7 +2,7 @@
 
 @section('title', 'Add product')
 @section('content')
-    <form>
+    <form method="post" action="{{route('dashboard.products.store')}}">
         <product-form>
         </product-form>
         {{--        <button type="button"--}}
