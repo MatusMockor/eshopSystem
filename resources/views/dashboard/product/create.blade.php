@@ -2,7 +2,7 @@
 
 @section('title', 'Add product')
 @section('content')
-    <form method="post" action="{{route('dashboard.products.store')}}">
+    <form method="post" action="{{route('dashboard.products.store')}}" enctype="multipart/form-data">
         @csrf
         <product-form>
         </product-form>
