@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -23,6 +24,7 @@ class StoreProductRequest extends FormRequest
 
         return [
             'name'        => ['required', 'string', $uniqRule],
+            'status'      => 'required|string|in:' . implode(',', Product::getStatuses()),
             'quantity'    => 'required|numeric',
             'price'       => 'required|numeric',
             'description' => 'string|sometimes',
