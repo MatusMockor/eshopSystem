@@ -23,6 +23,18 @@
     </div>
     <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-6 group">
+            <label for="statuses" class="sr-only">Select status</label>
+            <select id="statuses"
+                    v-model="productStatus"
+                    name="status"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                    required>
+                <option v-for="status in statuses" :value="status" :key="status" :selected="status === productStatus">
+                    {{ status }}
+                </option>
+            </select>
+        </div>
+        <div class="relative z-0 w-full mb-6 group">
             <input type="number" name="quantity" id="quantity"
                    v-model="productQuantity"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -62,7 +74,11 @@ export default {
         product: {
             type: Object,
             default: () => ({})
-        }
+        },
+        statuses: {
+            type: Array,
+            default: () => ([])
+        },
     },
     data() {
         return {
@@ -71,6 +87,7 @@ export default {
             productName: this.product.name ?? '',
             productPrice: this.product.price ?? 0,
             productQuantity: this.product.quantity ?? 0,
+            productStatus: this.product.status ?? '',
             editorConfig: {
                 toolbar: [
                     'bold', 'italic',

@@ -25,7 +25,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('dashboard.product.create');
+        return view('dashboard.product.create', [
+            'statuses' => Product::getStatuses()
+        ]);
     }
 
     public function store(StoreProductRequest $request) : RedirectResponse
