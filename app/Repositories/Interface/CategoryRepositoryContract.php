@@ -3,7 +3,6 @@
 namespace App\Repositories\Interface;
 
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Model;
 
 interface CategoryRepositoryContract
 {
