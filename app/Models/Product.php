@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
 /**
- * @property string          $name
- * @property string          $slug
- * @property string          $status
- * @property string|null     $description
- * @property double          $price
- * @property integer         $quantity
- * @property Collection|null $images
+ * @property string      $name
+ * @property string      $slug
+ * @property string      $status
+ * @property string|null $description
+ * @property double      $price
+ * @property integer     $quantity
+ * @property Collection  $images
  */
 class Product extends Model
 {
