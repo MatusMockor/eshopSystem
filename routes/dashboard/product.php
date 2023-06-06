@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Dashboard\ProductController;
 
 Route::group(['prefix' => 'products', 'middleware' => 'roles:admin'], function () {
     Route::get('/', [ProductController::class, 'index'])->name('dashboard.products.index');
