@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('slug');
+            $table->string('status');
             $table->text('description')->nullable();
             $table->integer('quantity')->default(0);
             $table->double('price');

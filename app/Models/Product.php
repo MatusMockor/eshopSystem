@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 /**
  * @property string          $name
  * @property string          $slug
+ * @property string          $status
  * @property string|null     $description
  * @property double          $price
  * @property integer         $quantity
@@ -34,6 +35,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'slug',
+        'status',
         'description',
         'price',
         'quantity',
