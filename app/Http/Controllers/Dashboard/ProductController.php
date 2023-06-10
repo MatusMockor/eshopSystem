@@ -36,4 +36,12 @@ class ProductController extends Controller
 
         return to_route('dashboard')->with('success', 'Product successfully created');
     }
+
+    public function edit(Product $product)
+    {
+        return view('dashboard.product.edit', [
+            'product'  => $product,
+            'statuses' => Product::getStatuses(),
+        ]);
+    }
 }
