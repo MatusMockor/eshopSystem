@@ -12,7 +12,7 @@ class ProductRepository implements ProductRepositoryContract
         Product::create($data);
     }
 
-    public function update(Product $product,array $data) : void
+    public function update(Product $product, array $data) : void
     {
         $product->update($data);
     }
