@@ -44,4 +44,11 @@ class ProductController extends Controller
             'statuses' => Product::getStatuses(),
         ]);
     }
+
+    public function update(StoreProductRequest $request, Product $product) : RedirectResponse
+    {
+        $this->productRepo->update($product, $request->validated());
+
+        return to_route('dashboard')->with('success', 'Product successfully updated');
+    }
 }

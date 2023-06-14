@@ -7,4 +7,5 @@ Route::group(['prefix' => 'products', 'middleware' => 'roles:admin'], function (
     Route::get('/create', [ProductController::class, 'create'])->name('dashboard.products.create');
     Route::post('/', [ProductController::class, 'store'])->name('dashboard.products.store');
     Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('dashboard.products.edit');
+    Route::patch('/{product}', [ProductController::class, 'update'])->name('dashboard.products.update');
 });
