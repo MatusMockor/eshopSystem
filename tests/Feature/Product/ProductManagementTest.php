@@ -33,3 +33,21 @@ it('admin can update the product', function () {
 
     expect($product->name)->toBe($newName);
 });
+
+it('slug changed when admin update product name', function () {
+    login();
+    $product = Product::factory()->create();
+    $newName = fake()->name;
+
+    patch(route('dashboard.products.update', $product->id), [
+        'name'        => $newName,
+        'status'      => $product->status,
+        'description' => $product->description,
+        'price'       => $product->price,
+        'quantity'    => $product->quantity,
+    ]);
+
+    $product->refresh();
+
+    expect($product->slug)->toBe(Str::slug($newName));
+});
