@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use function Pest\Laravel\patch;
 use function Pest\Laravel\post;
 
 it("admin can create new product", function () {
@@ -13,4 +14,22 @@ it("admin can create new product", function () {
     ]);
 
     expect(Product::count())->toBeOne();
+});
+
+it('admin can update the product', function () {
+    login();
+    $product = Product::factory()->create();
+    $newName = fake()->name;
+
+    patch(route('dashboard.products.update', $product->id), [
+        'name'        => $newName,
+        'status'      => $product->status,
+        'description' => $product->description,
+        'price'       => $product->price,
+        'quantity'    => $product->quantity,
+    ]);
+
+    $product->refresh();
+
+    expect($product->name)->toBe($newName);
 });
