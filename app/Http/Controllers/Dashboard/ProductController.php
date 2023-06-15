@@ -51,4 +51,11 @@ class ProductController extends Controller
 
         return to_route('dashboard')->with('success', 'Product successfully updated');
     }
+
+    public function delete(Product $product) : RedirectResponse
+    {
+        $this->productRepo->delete($product);
+
+        return to_route('dashboard')->with('success', 'Product successfully deleted');
+    }
 }

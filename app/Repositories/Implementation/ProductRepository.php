@@ -16,4 +16,9 @@ class ProductRepository implements ProductRepositoryContract
     {
         $product->update($data);
     }
+
+    public function delete(Product $product) : void
+    {
+        $product->delete();
+    }
 }
