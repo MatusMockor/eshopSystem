@@ -3,6 +3,7 @@
 @section('title', 'Add product')
 @section('content')
     <form method="post" action="{{route('dashboard.products.update', $product->id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('dashboard.products.update', $product)}}" enctype="multipart/form-data">
         @method('PATCH')
         @csrf
         <product-form
