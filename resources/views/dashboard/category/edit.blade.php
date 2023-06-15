@@ -2,7 +2,7 @@
 
 @section('title', 'Edit category')
 @section('content')
-    <form method="post" action="{{route('dashboard.categories.update', $category->id)}}">
+    <form method="post" action="{{route('dashboard.categories.update', $category)}}">
         @method('PATCH')
         @csrf
         <category-form
