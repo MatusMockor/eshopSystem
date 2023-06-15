@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\patch;
 use function Pest\Laravel\post;
 
@@ -50,4 +51,14 @@ it('slug changed when admin update product name', function () {
     $product->refresh();
 
     expect($product->slug)->toBe(Str::slug($newName));
+});
+
+it('admin can delete product', function () {
+    login();
+
+    $product = Product::factory()->create();
+    $productId = $product->id;
+
+    delete(route('dashboard.products.delete', $product));
+    expect(Product::firstWhere('id', $productId))->toBeNull();
 });
