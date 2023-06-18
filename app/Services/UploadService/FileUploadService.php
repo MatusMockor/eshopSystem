@@ -10,6 +10,6 @@ abstract class FileUploadService
 
     protected function upload(UploadedFile $file) : string
     {
-        return $file->storePublicly("public/" . $this->path());
+        return $file->storePublicly($this->path());
     }
 }

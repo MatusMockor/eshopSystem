@@ -13,7 +13,7 @@ class ProductGalleryService extends FileUploadService
 
     public function path() : string
     {
-        return "products/{$this->product->id}";
+        return "public/products/{$this->product->id}";
     }
 
     public function uploadImages(array $images, Product $product) : void
