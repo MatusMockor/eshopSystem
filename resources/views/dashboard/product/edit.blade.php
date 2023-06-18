@@ -18,6 +18,7 @@
         <product-form
             :product="{{json_encode($product)}}"
             :statuses="{{json_encode($statuses)}}"
+            :images="{{json_encode($images)}}"
         >
         </product-form>
     </form>

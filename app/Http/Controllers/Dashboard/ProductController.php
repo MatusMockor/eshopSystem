@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Models\Image;
 use App\Models\Product;
 use App\Repositories\Interface\ProductRepositoryContract;
 use Illuminate\Http\RedirectResponse;
@@ -39,8 +40,15 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $images = $product->images->map(fn($image) => /** @var Image $image */
+        [
+            'image_path' => asset($image->image_path),
+            'image_name' => $image->image_name,
+        ]);
+
         return view('dashboard.product.edit', [
             'product'  => $product,
+            'images'   => $images,
             'statuses' => Product::getStatuses(),
         ]);
     }
