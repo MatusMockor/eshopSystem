@@ -6,6 +6,7 @@
         @csrf
         <product-form
             :statuses="{{json_encode($statuses)}}"
+            :categories="{{json_encode($categories)}}"
         >
         </product-form>
     </form>
