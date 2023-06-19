@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\View\Composers\Dashboard\CategoryComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -19,6 +21,11 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot() : void
     {
-        //
+        View::composer([
+            'dashboard.product.create',
+            'dashboard.product.edit',
+            'dashboard.product.index',
+        ],
+            CategoryComposer::class);
     }
 }
