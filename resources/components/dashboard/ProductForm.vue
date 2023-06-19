@@ -29,7 +29,7 @@
                     name="status"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                     required>
-                <option v-for="status in statuses" :value="status" :key="status" :selected="status === status">
+                <option v-for="status in statuses" :value="status" :key="status" :selected="status === productStatus">
                     {{ status }}
                 </option>
             </select>
@@ -100,7 +100,7 @@ export default {
             name: this.product.name ?? '',
             price: this.product.price ?? 0,
             quantity: this.product.quantity ?? 0,
-            status: this.product.status ?? '',
+            productStatus: this.product.status ?? '',
             editorConfig: {
                 toolbar: [
                     'bold', 'italic',
