@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Finder\Finder;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,12 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::group(['middleware' => ['web', 'auth'], 'prefix' => self::HOME], function ($router) {
+                foreach (Finder::create()->files()->in(base_path('routes/dashboard')) as $routeFile) {
+                    require $routeFile->getPathname();
+                }
+            });
         });
     }
 

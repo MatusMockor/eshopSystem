@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -14,7 +16,7 @@ use Tests\TestCase;
 |
 */
 
-uses(TestCase::class, RefreshDatabase::class)->in('Feature');
+uses(TestCase::class, LazilyRefreshDatabase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,11 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+function login(?User $user = null)
+{
+    return test()->actingAs($user ?? User::factory()->create());
+}
+
 
 function something()
 {
