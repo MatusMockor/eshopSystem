@@ -37,12 +37,12 @@
         <div class="relative z-0 w-full mb-6 group">
             <label for="statuses" class="sr-only">Select category</label>
             <select id="statuses"
-                    v-model="status"
+                    v-model="categoryId"
                     name="status"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                     required>
-                <option v-for="status in statuses" :value="status" :key="status" :selected="status === status">
-                    {{ status }}
+                <option v-for="category in categories" :value="category.id" :key="category.id" :selected="category === categoryId">
+                    {{ category.name }}
                 </option>
             </select>
         </div>
@@ -92,6 +92,10 @@ export default {
             type: Array,
             default: () => ([])
         },
+        categories: {
+            type: Array,
+            default: () => ([])
+        }
     },
     data() {
         return {
@@ -101,6 +105,7 @@ export default {
             price: this.product.price ?? 0,
             quantity: this.product.quantity ?? 0,
             productStatus: this.product.status ?? '',
+            categoryId: this.product.category_id ?? '',
             editorConfig: {
                 toolbar: [
                     'bold', 'italic',

@@ -19,6 +19,7 @@
             :product="{{json_encode($product)}}"
             :statuses="{{json_encode($statuses)}}"
             :images="{{json_encode($images)}}"
+            :categories="{{json_encode($categories)}}"
         >
         </product-form>
     </form>
