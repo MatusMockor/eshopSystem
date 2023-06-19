@@ -34,6 +34,18 @@
                 </option>
             </select>
         </div>
+        <div class="relative z-0 w-full mb-6 group">
+            <label for="statuses" class="sr-only">Select category</label>
+            <select id="statuses"
+                    v-model="status"
+                    name="status"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                    required>
+                <option v-for="status in statuses" :value="status" :key="status" :selected="status === status">
+                    {{ status }}
+                </option>
+            </select>
+        </div>
     </div>
     <div class="w-full mb-10 group mt-10">
         <ckeditor :editor="editor" v-model="description" :config="editorConfig" class="h-full"></ckeditor>
