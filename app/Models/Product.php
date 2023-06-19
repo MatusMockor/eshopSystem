@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
  * @property string      $status
  * @property string|null $description
  * @property double      $price
+ * @property int|null    $category_id
  * @property integer     $quantity
  * @property Collection  $images
  */
@@ -39,6 +40,7 @@ class Product extends Model
         'description',
         'price',
         'quantity',
+        'category_id',
     ];
 
     public static function getStatuses() : array
