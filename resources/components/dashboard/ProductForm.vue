@@ -49,11 +49,15 @@
             <select id="statuses"
                     v-model="categoryId"
                     name="category_id"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-                    required>
+                    class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option v-for="category in categories" :value="category.id" :key="category.id"
                         :selected="category === categoryId">
                     {{ category.name }}
+                </option>
+                <option @click="unsetCategory"
+                        :selected="categoryId === ''"
+                >
+                    Without category
                 </option>
             </select>
         </div>
@@ -104,8 +108,8 @@ export default {
             default: () => ([])
         },
         categories: {
-            type: Array,
-            default: () => ([])
+            type: Object,
+            default: () => ({})
         }
     },
     data() {
@@ -125,6 +129,11 @@ export default {
                     '|', 'bulletedList'
                 ]
             },
+        }
+    },
+    methods: {
+        unsetCategory() {
+            this.categoryId = '';
         }
     }
 }

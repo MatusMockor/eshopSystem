@@ -24,6 +24,10 @@ class ProductRepository implements ProductRepositoryContract
 
     public function update(Product $product, array $data) : void
     {
+        if (!isset($data['category_id'])) {
+            $data['category_id'] = null;
+        }
+
         $product->update($data);
 
         if ($data['images'] ?? false) {
