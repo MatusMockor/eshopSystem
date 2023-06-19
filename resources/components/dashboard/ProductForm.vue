@@ -2,7 +2,7 @@
     <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-6 group">
             <input type="text" name="name" id="name"
-                   v-model="productName"
+                   v-model="name"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                    placeholder=" " required/>
             <label for="name"
@@ -12,7 +12,7 @@
         </div>
         <div class="relative z-0 w-full mb-6 group">
             <input type="number" name="price" id="price"
-                   v-model="productPrice"
+                   v-model="price"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                    placeholder=" " required/>
             <label for="price"
@@ -25,28 +25,18 @@
         <div class="relative z-0 w-full mb-6 group">
             <label for="statuses" class="sr-only">Select status</label>
             <select id="statuses"
-                    v-model="productStatus"
+                    v-model="status"
                     name="status"
                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                     required>
-                <option v-for="status in statuses" :value="status" :key="status" :selected="status === productStatus">
+                <option v-for="status in statuses" :value="status" :key="status" :selected="status === status">
                     {{ status }}
                 </option>
             </select>
         </div>
-        <div class="relative z-0 w-full mb-6 group">
-            <input type="number" name="quantity" id="quantity"
-                   v-model="productQuantity"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder=" " required/>
-            <label for="quantity"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                Quantity
-            </label>
-        </div>
     </div>
     <div class="w-full mb-10 group mt-10">
-        <ckeditor :editor="editor" v-model="productDescription" :config="editorConfig" class="h-full"></ckeditor>
+        <ckeditor :editor="editor" v-model="description" :config="editorConfig" class="h-full"></ckeditor>
     </div>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">
         Upload multiple files
@@ -94,11 +84,11 @@ export default {
     data() {
         return {
             editor: ClassicEditor,
-            productDescription: this.product.description ?? '',
-            productName: this.product.name ?? '',
-            productPrice: this.product.price ?? 0,
-            productQuantity: this.product.quantity ?? 0,
-            productStatus: this.product.status ?? '',
+            description: this.product.description ?? '',
+            name: this.product.name ?? '',
+            price: this.product.price ?? 0,
+            quantity: this.product.quantity ?? 0,
+            status: this.product.status ?? '',
             editorConfig: {
                 toolbar: [
                     'bold', 'italic',
