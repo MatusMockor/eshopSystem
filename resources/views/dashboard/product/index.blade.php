@@ -1,6 +1,5 @@
 @extends('dashboard.master')
 
-
 @section('title', 'All products')
 @section('content')
     @if($products->count())
