@@ -54,9 +54,7 @@
                         :selected="category === categoryId">
                     {{ category.name }}
                 </option>
-                <option @click="unsetCategory"
-                        :selected="categoryId === ''"
-                >
+                <option value="" :selected="categoryId === null">
                     Without category
                 </option>
             </select>
@@ -131,10 +129,5 @@ export default {
             },
         }
     },
-    methods: {
-        unsetCategory() {
-            this.categoryId = '';
-        }
-    }
 }
 </script>
