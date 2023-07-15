@@ -45,3 +45,8 @@ jobs:
         run: |
           until pg_isready -h localhost -p 5432 -U postgres; do sleep 1; done
 
+      - name: Run database migrations
+        run: php artisan migrate
+
+      - name: Run tests
+        run: vendor/bin/phpunit
