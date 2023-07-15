@@ -44,6 +44,9 @@ jobs:
       - name: Create symlink for storage
         run: php artisan storage:link
 
+      - name: Run database migrations
+        run: php artisan migrate:refresh
+
       - name: Wait for PostgreSQL
         run: |
           until pg_isready -h localhost -p 5432 -U postgres; do sleep 1; done
