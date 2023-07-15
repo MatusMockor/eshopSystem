@@ -9,6 +9,17 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: eshopSystem
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,24 +27,21 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Nahraďte prípadne verziou PHP, ktorú používate
+          php-version: '8.2'
 
       - name: Install dependencies
         run: composer install
-
-      - name: Setup PostgreSQL
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y postgresql
-          sudo service postgresql start
-          psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD 'admin';"
-          createdb eshopSystem -U postgres
 
       - name: Copy .env file
         run: cp .env.initial .env
 
       - name: Generate application key
         run: php artisan key:generate
+
+      - name: Wait for PostgreSQL
+        run: |
+          apt-get -y install postgresql-client
+          until pg_isready -h localhost -p 5432 -U admin; do sleep 1; done
 
       - name: Run database migrations
         run: php artisan migrate
