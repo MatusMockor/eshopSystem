@@ -35,6 +35,20 @@ jobs:
       - name: Install dependencies
         run: composer install --no-scripts
 
+      - name: Allow apt-get to run
+        run: sudo rm -f /var/lib/dpkg/lock-frontend
+
+      - name: Update apt cache
+        run: sudo apt-get update
+
+      - name: Install PostgreSQL client
+        run: sudo apt-get install postgresql-client -y
+
+      - name: Create PostgreSQL database
+        env:
+          PGPASSWORD: eshopSystem
+        run: createdb -h localhost -U admin -e admin
+
       - name: Copy .env file
         run: cp .env.initial .env  # Zmeníme z .env.example na .env.initial
 
