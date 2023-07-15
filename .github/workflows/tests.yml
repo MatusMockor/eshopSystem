@@ -41,6 +41,9 @@ jobs:
       - name: Generate application key
         run: php artisan key:generate
 
+      - name: Create symlink for storage
+        run: php artisan storage:link
+
       - name: Wait for PostgreSQL
         run: |
           until pg_isready -h localhost -p 5432 -U postgres; do sleep 1; done
