@@ -1,0 +1,46 @@
+name: Laravel Tests
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'  # Nahraďte prípadne verziou PHP, ktorú používate
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Setup PostgreSQL
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: eshopSystem
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y postgresql
+          sudo service postgresql start
+          psql -U postgres -c "CREATE USER $POSTGRES_USER WITH ENCRYPTED PASSWORD '$POSTGRES_PASSWORD';"
+          psql -U postgres -c "CREATE DATABASE $POSTGRES_DB OWNER $POSTGRES_USER;"
+
+      - name: Copy .env file
+        run: cp .env.initial .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run database migrations
+        run: php artisan migrate
+
+      - name: Run tests
+        run: vendor/bin/phpunit
