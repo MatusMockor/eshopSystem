@@ -29,8 +29,11 @@ jobs:
         with:
           php-version: '8.2'
 
+      - name: Fix permissions
+        run: sudo chown -R $USER:$USER $HOME/.composer
+
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-scripts
 
       - name: Allow apt-get to run
         run: sudo rm -f /var/lib/dpkg/lock-frontend
