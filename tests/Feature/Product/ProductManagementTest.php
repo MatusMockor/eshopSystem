@@ -86,6 +86,5 @@ it('user can upload images for product', function () {
 
     /** @var Image $image */
     $image = $product->images->first();
-    dump($image->image_path);
     Storage::disk('local')->assertExists($image->image_path);
 });
