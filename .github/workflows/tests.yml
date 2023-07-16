@@ -38,8 +38,8 @@ jobs:
       - name: Copy .env file
         run: cp .env.initial .env
 
-      - name: Copy .env file for testing
-        run: cp .env.testing.initial .env.testing
+#      - name: Copy .env file for testing
+#        run: cp .env.testing.initial .env.testing
 
       - name: Generate application key
         run: php artisan key:generate
