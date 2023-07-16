@@ -67,7 +67,7 @@ it('admin can delete product', function () {
 });
 
 it('user can upload images for product', function () {
-    Storage::fake('local')->allDirectories();
+    Storage::fake('local');
     login();
 
     $product = Product::factory()->create();
