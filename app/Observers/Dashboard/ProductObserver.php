@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Observers\Dashboard;
 
 use App\Models\Product;
 use Str;
