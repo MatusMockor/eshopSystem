@@ -9,6 +9,14 @@ class StorePageRequest extends FormRequest
 {
     public function rules() : array
     {
+        $uniqRule = $this->route('page')
+            ? Rule::unique('pages')->ignore($this->route('page'))
+            : Rule::unique('pages');
+
+        return [
+            'name' => ['required', 'string', $uniqRule],
+            'body' => 'required',
+        ];
     }
 
     public function authorize() : bool
