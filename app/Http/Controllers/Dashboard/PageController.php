@@ -14,4 +14,9 @@ class PageController extends Controller
             ]
         );
     }
+
+    public function create()
+    {
+        return view('dashboard.page.create');
+    }
 }
