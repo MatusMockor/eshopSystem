@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StorePageRequest extends FormRequest
+class StoreSubPageRequest extends FormRequest
 {
     public function rules() : array
     {
