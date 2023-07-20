@@ -62,6 +62,7 @@
     </div>
     <div class="w-full mb-10 group mt-10">
         <ckeditor :editor="editor" v-model="description" :config="editorConfig" class="h-full"></ckeditor>
+      <input type="text" hidden="hidden" name="description" v-model="description">
     </div>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">
         Upload multiple files
