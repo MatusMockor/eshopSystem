@@ -1,6 +1,6 @@
 @extends('dashboard.master')
 
-@section('title', 'All products')
+@section('title', 'All Pages')
 @section('content')
     @if($pages->count())
         <div
