@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Repositories\Implementation\CategoryRepository;
 use App\Repositories\Implementation\ProductRepository;
+use App\Repositories\Implementation\SubPageRepository;
 use App\Repositories\Interface\CategoryRepositoryContract;
 use App\Repositories\Interface\ProductRepositoryContract;
+use App\Repositories\Interface\SubPageRepositoryContract;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -17,7 +19,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $contracts = [
             CategoryRepositoryContract::class => CategoryRepository::class,
-            ProductRepositoryContract::class  => ProductRepository::class,
+            ProductRepositoryContract::class => ProductRepository::class,
+            SubPageRepositoryContract::class => SubPageRepository::class
         ];
 
         foreach ($contracts as $contract => $implementation) {
