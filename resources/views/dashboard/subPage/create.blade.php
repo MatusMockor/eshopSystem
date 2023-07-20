@@ -5,7 +5,6 @@
     <form method="post" action="">
         @csrf
         <page-form>
-
         </page-form>
     </form>
 @endsection
