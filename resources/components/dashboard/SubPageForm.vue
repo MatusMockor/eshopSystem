@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="w-full mb-10 group mt-10">
-    <ckeditor :editor="editor" v-model="description" :config="editorConfig" class="h-full"></ckeditor>
+    <ckeditor :editor="editor" v-model="body" :config="editorConfig" class="h-full"></ckeditor>
   </div>
   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">
     Upload multiple files
@@ -32,7 +32,7 @@ import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export default {
-  name: "PageForm",
+  name: "SubPageForm",
   components: {
     ckeditor: CKEditor.component
   },
@@ -46,7 +46,7 @@ export default {
     return {
       editor: ClassicEditor,
       name: this.page.name ?? '',
-      description: this.page.description ?? '',
+      body: this.page.body ?? '',
       editorConfig: {
         toolbar: [
           'bold', 'italic',

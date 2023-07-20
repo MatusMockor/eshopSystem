@@ -4,7 +4,7 @@
 @section('content')
     <form method="post" action="">
         @csrf
-        <page-form>
-        </page-form>
+        <sub-page-form>
+        </sub-page-form>
     </form>
 @endsection
