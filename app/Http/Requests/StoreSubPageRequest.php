@@ -9,9 +9,9 @@ class StoreSubPageRequest extends FormRequest
 {
     public function rules() : array
     {
-        $uniqRule = $this->route('page')
-            ? Rule::unique('pages')->ignore($this->route('page'))
-            : Rule::unique('pages');
+        $uniqRule = $this->route('subPage')
+            ? Rule::unique('sub_pages')->ignore($this->route('subPage'))
+            : Rule::unique('sub_pages');
 
         return [
             'name' => ['required', 'string', $uniqRule],
