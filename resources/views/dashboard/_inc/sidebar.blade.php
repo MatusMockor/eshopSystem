@@ -103,15 +103,15 @@
                 </button>
                 <ul id="pages" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="{{route('dashboard.pages.index')}}"
+                        <a href="{{route('dashboard.subPages.index')}}"
                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            Show Pages
+                            Show Sub-Pages
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard.pages.create')}}"
+                        <a href="{{route('dashboard.subPages.create')}}"
                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            Add page
+                            Add Sub-Page
                         </a>
                     </li>
                 </ul>

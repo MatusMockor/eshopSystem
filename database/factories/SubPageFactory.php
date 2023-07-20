@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Page;
+use App\Models\SubPage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class PageFactory extends Factory
+class SubPageFactory extends Factory
 {
-    protected $model = Page::class;
+    protected $model = SubPage::class;
 
     public function definition() : array
     {

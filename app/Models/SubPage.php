@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property string $body
  */
-class Page extends Model
+class SubPage extends Model
 {
     use HasFactory;
 

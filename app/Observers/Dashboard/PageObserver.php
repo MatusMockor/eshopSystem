@@ -2,16 +2,16 @@
 
 namespace App\Observers\Dashboard;
 
-use App\Models\Page;
+use App\Models\SubPage;
 
 class PageObserver
 {
-    public function creating(Page $page) : void
+    public function creating(SubPage $page) : void
     {
         $page->slug = \Str::slug($page->name);
     }
 
-    public function updating(Page $page) : void
+    public function updating(SubPage $page) : void
     {
         $page->slug = \Str::slug($page->name);
     }
