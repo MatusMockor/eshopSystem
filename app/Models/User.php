@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Services\Presenters\UserPresenter;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,14 +22,13 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string                          $password
  * @property int|null                        $role_id
  * @property string|null                     $remember_token
+ * @property string                          $fullName
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    protected ?UserPresenter $presenter = null;
 
     /**
      * The attributes that are mass assignable.
@@ -77,9 +76,10 @@ class User extends Authenticatable
         return (bool)$hasRole;
     }
 
-    public function present(): UserPresenter
+    public function fullName(): Attribute
     {
-        $this->presenter = $this->presenter ?? new UserPresenter($this);
-        return $this->presenter;
+        return Attribute::make(
+            get: fn() => "$this->first_name $this->last_name"
+        );
     }
 }
