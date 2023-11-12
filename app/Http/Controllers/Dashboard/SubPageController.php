@@ -10,10 +10,6 @@ use Illuminate\Http\RedirectResponse;
 
 class SubPageController extends Controller
 {
-    public function __construct(protected SubPageRepositoryContract $subPageRepository)
-    {
-    }
-
     public function index()
     {
         return view('dashboard.subPage.index', [
@@ -29,7 +25,7 @@ class SubPageController extends Controller
 
     public function store(StoreSubPageRequest $request) : RedirectResponse
     {
-        $this->subPageRepository->create($request->validated());
+        SubPage::create($request->validated());
 
         return to_route('dashboard')->with('success', 'Sub-Page was successfully created');
     }

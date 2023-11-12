@@ -6,14 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Image;
 use App\Models\Product;
-use App\Repositories\Interface\ProductRepositoryContract;
+use App\Services\UploadService\Images\ProductGalleryService;
 use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
-    public function __construct(protected ProductRepositoryContract $productRepo)
-    {
-    }
+    public function __construct(protected ProductGalleryService $productGalleryService) {}
 
     public function index()
     {
@@ -33,15 +31,18 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request) : RedirectResponse
     {
-        $this->productRepo->create($request->validated());
+        $data = $request->validated();
+        $product = Product::create($data);
+        if ($data['images'] ?? false) {
+            $this->productGalleryService->uploadImages($data['images'], $product);
+        }
 
         return to_route('dashboard')->with('success', 'Product successfully created');
     }
 
     public function edit(Product $product)
     {
-        $images = $product->images->map(fn($image) => /** @var Image $image */
-        [
+        $images = $product->images->map(fn($image) => /** @var Image $image */ [
             'image_path' => asset($image->image_path),
             'image_name' => $image->image_name,
         ]);
@@ -55,14 +56,19 @@ class ProductController extends Controller
 
     public function update(StoreProductRequest $request, Product $product) : RedirectResponse
     {
-        $this->productRepo->update($product, $request->validated());
+        $data = $request->validated();
+        $product->update($data);
+
+        if ($data['images'] ?? false) {
+            $this->productGalleryService->uploadImages($data['images'], $product);
+        }
 
         return to_route('dashboard')->with('success', 'Product successfully updated');
     }
 
     public function delete(Product $product) : RedirectResponse
     {
-        $this->productRepo->delete($product);
+        $product->delete($product);
 
         return to_route('dashboard')->with('success', 'Product successfully deleted');
     }

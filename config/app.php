@@ -199,7 +199,6 @@ return [
          * My service providers
         */
         \App\Providers\ObserverServiceProvider::class,
-        \App\Providers\RepositoryServiceProvider::class,
         \App\Providers\ViewServiceProvider::class,
 
     ],

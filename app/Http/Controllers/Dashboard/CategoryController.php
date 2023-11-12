@@ -5,16 +5,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
-use App\Repositories\Interface\CategoryRepositoryContract;
 use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends Controller
 {
-
-    public function __construct(protected CategoryRepositoryContract $categoryRepo)
-    {
-    }
-
     public function index()
     {
         $categories = Category::latest()->paginate();
@@ -30,7 +24,7 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request) : RedirectResponse
     {
-        $this->categoryRepo->create($request->validated());
+        Category::create($request->validated());
 
         return to_route('dashboard');
     }
@@ -44,7 +38,7 @@ class CategoryController extends Controller
 
     public function update(StoreCategoryRequest $request, Category $category) : RedirectResponse
     {
-        $this->categoryRepo->update($category, $request->validated());
+        $category->update($category, $request->validated());
 
         return to_route('dashboard');
     }
