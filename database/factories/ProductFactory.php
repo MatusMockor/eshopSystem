@@ -23,4 +23,19 @@ class ProductFactory extends Factory
             'quantity'    => $this->faker->numberBetween(0, 100),
         ];
     }
+
+    public function inactive() : self
+    {
+        return $this->state([
+            'status' => Product::STATUS_INACTIVE,
+        ]);
+    }
+
+    public function soldOut() : self
+    {
+        return $this->state([
+            'status'   => Product::STATUS_SOLD_OUT,
+            'quantity' => 0,
+        ]);
+    }
 }
