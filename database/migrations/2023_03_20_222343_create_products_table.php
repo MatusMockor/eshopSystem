@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->integer('quantity')->default(0);
             $table->double('price');
             $table->foreignId('category_id')->nullable();
+            $table->softDeletes();
         });
     }
 
