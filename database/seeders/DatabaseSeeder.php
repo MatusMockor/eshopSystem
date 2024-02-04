@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         Setting::factory()->create();
         User::factory()->create();
         Category::factory()->create();
-        Product::factory()->create();
+        Product::factory(5)->create();
+        Product::factory(5)->inactive()->create();
+        Product::factory(5)->soldOut()->create();
         SubPage::factory(5)->create();
     }
 }
