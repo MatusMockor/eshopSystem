@@ -42,7 +42,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $images = $product->images->map(fn($image) => /** @var Image $image */ [
+        $images = $product->images->map(fn(Image $image) => [
             'image_path' => asset($image->image_path),
             'image_name' => $image->image_name,
         ]);
