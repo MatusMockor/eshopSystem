@@ -29,7 +29,7 @@ class ViewServiceProvider extends ServiceProvider
         ], CategoryComposer::class);
 
         View::composer('*', fn(\Illuminate\View\View $view) => $view->with([
-            'pageSettingId' => Setting::first()->id ?? 1,
+            'pageSettingId' => Setting::first()->id,
         ]));
     }
 }
