@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
 
 class StoreProductRequest extends FormRequest
 {
@@ -18,18 +19,25 @@ class StoreProductRequest extends FormRequest
 
     public function rules(): array
     {
-        $uniqRule = $this->route('product')
-            ? Rule::unique('products')->ignore($this->route('product'))
-            : Rule::unique('products');
+        $uniqueProductRule = $this->uniqueProductRule();
 
         return [
-            'name'        => ['required', 'string', $uniqRule],
+            'name'        => ['required', 'string', $uniqueProductRule],
             'status'      => 'required|string|in:'.implode(',', Product::getStatuses()),
             'quantity'    => 'required|numeric',
             'price'       => 'required|numeric',
             'description' => 'string|sometimes',
-            'category_id' => 'nullable|integer|exists:categories,id|sometimes',
+            'category_id' => 'integer|exists:categories,id',
             'images.*'    => 'mimes:png,jpg,jpeg',
         ];
+    }
+
+    private function uniqueProductRule()
+    {
+        $product = $this->route('product');
+
+        return Rule::unique('products')->when($product, function (Unique $unique) use ($product) {
+            $unique->ignore($product->id);
+        });
     }
 }

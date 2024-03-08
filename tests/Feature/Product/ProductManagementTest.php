@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\UploadedFile;
@@ -11,11 +12,13 @@ use function Pest\Laravel\post;
 
 it('admin can create new product', function () {
     login();
+    $category = Category::factory()->create();
     post(route('dashboard.products.store'), [
-        'name'     => fake()->name,
-        'status'   => Product::STATUS_INACTIVE,
-        'quantity' => random_int(0, 100),
-        'price'    => random_int(0, 100),
+        'name'        => fake()->name,
+        'status'      => Product::STATUS_INACTIVE,
+        'category_id' => $category->id,
+        'quantity'    => random_int(0, 100),
+        'price'       => random_int(0, 100),
     ]);
 
     expect(Product::count())->toBeOne();
