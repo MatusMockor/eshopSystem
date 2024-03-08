@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
  * @property int $category_id
  * @property int $quantity
  * @property Collection $images
+ * @property Category $category
  */
 class Product extends Model
 {
