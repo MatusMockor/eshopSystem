@@ -28,8 +28,8 @@ class ViewServiceProvider extends ServiceProvider
             'dashboard.product.index',
         ], CategoryComposer::class);
 
-        View::composer('*', fn (\Illuminate\View\View $view) => $view->with([
+        View::share([
             'pageSettingId' => Setting::first()->id,
-        ]));
+        ]);
     }
 }
