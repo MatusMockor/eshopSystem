@@ -62,7 +62,7 @@
                             {{$product->created_at->diffForHumans()}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$product->created_at->diffForHumans()}}
+                            {{$product->updated_at->diffForHumans()}}
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{route('dashboard.products.edit', $product->id)}}"
