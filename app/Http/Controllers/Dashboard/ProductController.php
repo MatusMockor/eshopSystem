@@ -67,7 +67,7 @@ class ProductController extends Controller
             $this->productGalleryService->uploadImages($data['images'], $product);
         }
 
-        return to_route('dashboard')->with('success', 'Product successfully updated');
+        return to_route('dashboard.products.index')->with('success', 'Product successfully updated');
     }
 
     public function delete(Product $product): RedirectResponse
