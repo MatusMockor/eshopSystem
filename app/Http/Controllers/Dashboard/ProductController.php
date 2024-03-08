@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
-    public function __construct(protected ProductGalleryService $productGalleryService)
+    public function __construct(protected readonly ProductGalleryService $productGalleryService)
     {
     }
 
