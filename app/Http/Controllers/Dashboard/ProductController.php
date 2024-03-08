@@ -11,7 +11,9 @@ use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
-    public function __construct(protected ProductGalleryService $productGalleryService) {}
+    public function __construct(protected ProductGalleryService $productGalleryService)
+    {
+    }
 
     public function index()
     {
@@ -29,7 +31,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(StoreProductRequest $request) : RedirectResponse
+    public function store(StoreProductRequest $request): RedirectResponse
     {
         $data = $request->validated();
         $product = Product::create($data);
@@ -42,7 +44,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $images = $product->images->map(fn(Image $image) => [
+        $images = $product->images->map(fn (Image $image) => [
             'image_path' => asset($image->image_path),
             'image_name' => $image->image_name,
         ]);
@@ -54,7 +56,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(StoreProductRequest $request, Product $product) : RedirectResponse
+    public function update(StoreProductRequest $request, Product $product): RedirectResponse
     {
         $data = $request->validated();
         $product->update($data);
@@ -66,7 +68,7 @@ class ProductController extends Controller
         return to_route('dashboard')->with('success', 'Product successfully updated');
     }
 
-    public function delete(Product $product) : RedirectResponse
+    public function delete(Product $product): RedirectResponse
     {
         $product->delete($product);
 

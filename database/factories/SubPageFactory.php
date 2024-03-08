@@ -10,7 +10,7 @@ class SubPageFactory extends Factory
 {
     protected $model = SubPage::class;
 
-    public function definition() : array
+    public function definition(): array
     {
         return [
             'name'       => $this->faker->name(),

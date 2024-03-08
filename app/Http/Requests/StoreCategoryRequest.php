@@ -24,7 +24,7 @@ class StoreCategoryRequest extends FormRequest
         $nameRules = ['required', $uniqRule];
 
         return [
-            'name' => $nameRules
+            'name' => $nameRules,
         ];
     }
 }

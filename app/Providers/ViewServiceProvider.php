@@ -12,7 +12,7 @@ class ViewServiceProvider extends ServiceProvider
     /**
      * Register services.
      */
-    public function register() : void
+    public function register(): void
     {
         //
     }
@@ -20,7 +20,7 @@ class ViewServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot() : void
+    public function boot(): void
     {
         View::composer([
             'dashboard.product.create',
@@ -28,7 +28,7 @@ class ViewServiceProvider extends ServiceProvider
             'dashboard.product.index',
         ], CategoryComposer::class);
 
-        View::composer('*', fn(\Illuminate\View\View $view) => $view->with([
+        View::composer('*', fn (\Illuminate\View\View $view) => $view->with([
             'pageSettingId' => Setting::first()->id,
         ]));
     }

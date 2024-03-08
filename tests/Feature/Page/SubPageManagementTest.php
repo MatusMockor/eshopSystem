@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\SubPage;
+
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 use function PHPUnit\Framework\assertEquals;
@@ -25,7 +26,7 @@ test('admin can create sub page', function () {
     login();
     post(route('dashboard.subPages.store', [
         'name' => fake()->name,
-        'body' => fake()->text
+        'body' => fake()->text,
     ]))->assertStatus(302);
 
     assertEquals(1, SubPage::count());

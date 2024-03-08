@@ -13,16 +13,16 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * App\Models\User
  *
- * @property  string                         $email
- * @property  Role|null                      $role
- * @property int                             $id
- * @property string                          $first_name
+ * @property string $email
+ * @property Role|null $role
+ * @property int $id
+ * @property string $first_name
  * @property string                          last_name
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string                          $password
- * @property int|null                        $role_id
- * @property string|null                     $remember_token
- * @property string                          $fullName
+ * @property string $password
+ * @property int|null $role_id
+ * @property string|null $remember_token
+ * @property string $fullName
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
@@ -73,13 +73,13 @@ class User extends Authenticatable
             return in_array($role, Role::allRoles()) ?? false;
         });
 
-        return (bool)$hasRole;
+        return (bool) $hasRole;
     }
 
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn() => "$this->first_name $this->last_name"
+            get: fn () => "$this->first_name $this->last_name"
         );
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 
 class StoreSubPageRequest extends FormRequest
 {
-    public function rules() : array
+    public function rules(): array
     {
         $uniqRule = $this->route('subPage')
             ? Rule::unique('sub_pages')->ignore($this->route('subPage'))
@@ -19,7 +19,7 @@ class StoreSubPageRequest extends FormRequest
         ];
     }
 
-    public function authorize() : bool
+    public function authorize(): bool
     {
         return true;
     }

@@ -9,14 +9,15 @@ use Illuminate\Http\UploadedFile;
 class ProductGalleryService extends FileUploadService
 {
     protected array $dataForDb = [];
+
     protected Product $product;
 
-    public function path() : string
+    public function path(): string
     {
         return "products/{$this->product->id}";
     }
 
-    public function uploadImages(array $images, Product $product) : void
+    public function uploadImages(array $images, Product $product): void
     {
         $this->product = $product;
         foreach ($images as $image) {

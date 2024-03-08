@@ -4,11 +4,12 @@ use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+
 use function Pest\Laravel\delete;
 use function Pest\Laravel\patch;
 use function Pest\Laravel\post;
 
-it("admin can create new product", function () {
+it('admin can create new product', function () {
     login();
     post(route('dashboard.products.store'), [
         'name'     => fake()->name,

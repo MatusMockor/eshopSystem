@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Role;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -15,7 +14,7 @@ class AuthenticateRoles
      */
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
-        if (!user()->hasRole($roles)) {
+        if (! user()->hasRole($roles)) {
             throw new AuthenticationException(
                 'Unauthenticated.', [], back()->withErrors(["Doesn't have permission !"])
             );

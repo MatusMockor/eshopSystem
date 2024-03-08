@@ -11,12 +11,12 @@ class StoreProductRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize() : bool
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules() : array
+    public function rules(): array
     {
         $uniqRule = $this->route('product')
             ? Rule::unique('products')->ignore($this->route('product'))
@@ -24,7 +24,7 @@ class StoreProductRequest extends FormRequest
 
         return [
             'name'        => ['required', 'string', $uniqRule],
-            'status'      => 'required|string|in:' . implode(',', Product::getStatuses()),
+            'status'      => 'required|string|in:'.implode(',', Product::getStatuses()),
             'quantity'    => 'required|numeric',
             'price'       => 'required|numeric',
             'description' => 'string|sometimes',

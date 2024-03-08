@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubPageRequest;
 use App\Models\SubPage;
-use App\Repositories\Interface\SubPageRepositoryContract;
 use Illuminate\Http\RedirectResponse;
 
 class SubPageController extends Controller
@@ -13,8 +12,8 @@ class SubPageController extends Controller
     public function index()
     {
         return view('dashboard.subPage.index', [
-                'pages' => SubPage::all(),
-            ]
+            'pages' => SubPage::all(),
+        ]
         );
     }
 
@@ -23,7 +22,7 @@ class SubPageController extends Controller
         return view('dashboard.subPage.create');
     }
 
-    public function store(StoreSubPageRequest $request) : RedirectResponse
+    public function store(StoreSubPageRequest $request): RedirectResponse
     {
         SubPage::create($request->validated());
 

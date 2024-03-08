@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-function user() : User|null
+function user(): ?User
 {
     return auth()->user();
 }

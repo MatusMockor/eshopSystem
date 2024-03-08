@@ -12,10 +12,10 @@ class ProductFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition() : array
+    public function definition(): array
     {
         return [
-            'name'        => $this->faker->words(2, true) . ' product',
+            'name'        => $this->faker->words(2, true).' product',
             'slug'        => $this->faker->slug,
             'status'      => Product::STATUS_INACTIVE,
             'description' => $this->faker->text,
@@ -24,14 +24,14 @@ class ProductFactory extends Factory
         ];
     }
 
-    public function inactive() : self
+    public function inactive(): self
     {
         return $this->state([
             'status' => Product::STATUS_INACTIVE,
         ]);
     }
 
-    public function soldOut() : self
+    public function soldOut(): self
     {
         return $this->state([
             'status'   => Product::STATUS_SOLD_OUT,

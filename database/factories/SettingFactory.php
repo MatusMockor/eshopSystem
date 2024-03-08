@@ -10,7 +10,7 @@ class SettingFactory extends Factory
 {
     protected $model = Setting::class;
 
-    public function definition() : array
+    public function definition(): array
     {
         return [
             'title'      => config('app.name'),

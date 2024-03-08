@@ -11,10 +11,10 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Role
  *
- * @property int         $id
- * @property string      $name
- * @property string      $slug
- * @property Collection  $user
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property Collection $user
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */

@@ -1,15 +1,15 @@
 <?php
 
 use App\Models\Category;
-use App\Models\User;
-use \Illuminate\Support\Str;
+use Illuminate\Support\Str;
+
 use function Pest\Laravel\post;
 
 it('user can create a category', function () {
     login();
     $name = fake()->title;
     post(route('dashboard.categories.store'), [
-        'name' => $name
+        'name' => $name,
     ]);
 
     expect(Category::firstWhere('name', $name)->name)->toBe($name);
@@ -27,9 +27,9 @@ it('user can not create category with exists name', function () {
     login();
     $name = 'Category name';
     post(route('dashboard.categories.store'), [
-        'name' => $name
+        'name' => $name,
     ]);
     post(route('dashboard.categories.store'), [
-        'name' => $name
+        'name' => $name,
     ])->assertSessionHasErrors();
 });

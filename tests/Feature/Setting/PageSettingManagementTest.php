@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Setting;
+
 use function Pest\Laravel\patch;
 
 it('user can update page settings', function () {
