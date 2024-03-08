@@ -92,3 +92,13 @@ it('user can upload images for product', function () {
     $image = $product->images->first();
     Storage::disk('public')->assertExists($image->image_path);
 });
+
+it('user can not create product without category', function () {
+    login();
+    post(route('dashboard.products.store'), [
+        'name'     => fake()->name,
+        'status'   => Product::STATUS_INACTIVE,
+        'quantity' => random_int(0, 100),
+        'price'    => random_int(0, 100),
+    ])->assertSessionHasErrors('category_id');
+});
