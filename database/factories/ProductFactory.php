@@ -24,13 +24,6 @@ class ProductFactory extends Factory
         ];
     }
 
-    public function inactive(): self
-    {
-        return $this->state([
-            'status' => Product::STATUS_INACTIVE,
-        ]);
-    }
-
     public function soldOut(): self
     {
         return $this->state([
