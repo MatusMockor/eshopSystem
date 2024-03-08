@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         Product::factory(20)
             ->recycle($category)
             ->soldOut()->create();
+        Product::factory(20)
+            ->recycle($category)
+            ->active()->create();
 
         SubPage::factory(5)->create();
     }
