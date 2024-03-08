@@ -24,6 +24,12 @@
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        created at
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        updated at
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         <span class="sr-only">Edit</span>
                     </th>
                 </tr>
@@ -45,6 +51,12 @@
                         </td>
                         <td class="px-6 py-4">
                             {{$product->status}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$product->created_at->diffForHumans()}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$product->created_at->diffForHumans()}}
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{route('dashboard.products.edit', $product->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
