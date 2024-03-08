@@ -50,7 +50,13 @@
                             {{$product->price}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$product->status}}
+                            @if($product->isStatusActive())
+                                <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{$product->status}}</span>
+                            @elseif($product->isStatusInActive())
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{{$product->status}}</span>
+                            @elseif($product->isStatusSoldOut())
+                                <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{$product->status}}</span>
+                            @endif
                         </td>
                         <td class="px-6 py-4">
                             {{$product->created_at->diffForHumans()}}
@@ -59,7 +65,8 @@
                             {{$product->created_at->diffForHumans()}}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{route('dashboard.products.edit', $product->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="{{route('dashboard.products.edit', $product->id)}}"
+                               class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                     </tr>
                 @endforeach
@@ -67,7 +74,7 @@
             </table>
         </div>
         <br>
-            {{$products->links()}}
+        {{$products->links()}}
     @else()
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             <mark class="px-2 text-white bg-blue-600 rounded dark:bg-red-500">No products</mark>

@@ -74,4 +74,19 @@ class Product extends Model
             'category_name' => Category::select('name')->whereColumn('id', 'products.category_id')->limit(1),
         ]);
     }
+
+    public function isStatusActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function isStatusInActive(): bool
+    {
+        return $this->status === self::STATUS_INACTIVE;
+    }
+
+    public function isStatusSoldOut(): bool
+    {
+        return $this->status === self::STATUS_SOLD_OUT;
+    }
 }
