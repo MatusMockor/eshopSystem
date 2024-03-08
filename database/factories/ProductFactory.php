@@ -31,4 +31,11 @@ class ProductFactory extends Factory
             'quantity' => 0,
         ]);
     }
+
+    public function active(): self
+    {
+        return $this->state([
+            'status' => Product::STATUS_ACTIVE,
+        ]);
+    }
 }
