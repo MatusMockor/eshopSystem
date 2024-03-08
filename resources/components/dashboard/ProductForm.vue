@@ -49,7 +49,9 @@
       <select id="statuses"
               v-model="categoryId"
               name="category_id"
-              class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:text-white border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+              class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent dark:text-white border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              required
+      >
         <option v-for="category in categories" :value="category.id" :key="category.id"
                 :selected="category === categoryId">
           {{ category.name }}
