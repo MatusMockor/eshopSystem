@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
  * @property string $status
  * @property string|null $description
  * @property float $price
- * @property int|null $category_id
+ * @property int $category_id
  * @property int $quantity
  * @property Collection $images
  */
@@ -24,17 +24,17 @@ class Product extends Model
 
     // This status indicates that the product is active and displayed on the e-commerce website.
     // Customers can view and purchase it.
-    const STATUS_ACTIVE = 'active';
+    public const STATUS_ACTIVE = 'active';
 
     // This status indicates that the product is inactive and not displayed on the e-commerce website.
     // Customers cannot see or purchase it. This status is often used when you want to temporarily
     // hide a product, such as due to unavailability, repairs, or updates.
-    const STATUS_INACTIVE = 'inactive';
+    public const STATUS_INACTIVE = 'inactive';
 
     // This status indicates that the product is currently sold out and cannot be purchased. It is displayed
     // on the e-commerce website but without the option to add it to the cart. This status is commonly
     // used to inform customers about the temporary unavailability of a product.
-    const STATUS_SOLD_OUT = 'sold_out';
+    public const STATUS_SOLD_OUT = 'sold_out';
 
     protected $fillable = [
         'name',
