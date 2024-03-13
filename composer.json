@@ -20,7 +20,6 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.4",
         "pestphp/pest": "^1.23",
-        "pestphp/pest-plugin-laravel": "^1.2",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -64,7 +63,6 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
             "php-http/discovery": true
         }
     },
