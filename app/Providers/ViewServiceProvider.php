@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Setting;
 use App\View\Composers\Dashboard\CategoryComposer;
 use Illuminate\Support\Facades\View;
+use Illuminate\View\View as ViewView;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -28,8 +29,8 @@ class ViewServiceProvider extends ServiceProvider
             'dashboard.product.index',
         ], CategoryComposer::class);
 
-        View::share([
-            'pageSettingId' => Setting::first()->id,
-        ]);
+        View::composer('*', function (ViewView $view) {
+            $view->with('pageSettingId', Setting::first()->id);
+        });
     }
 }

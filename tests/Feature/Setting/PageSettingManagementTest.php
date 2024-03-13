@@ -1,22 +1,38 @@
 <?php
 
+namespace Tests\Feature\Setting;
+
 use App\Models\Setting;
+use App\Models\User;
+use Tests\TestCase;
 
-use function Pest\Laravel\patch;
+class PageSettingManagementTest extends TestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->be(User::factory()->create());
+    }
 
-it('user can update page settings', function () {
-    login();
-    $settings = Setting::factory()->create();
-    $newData = [
-        'title'    => config('app.name'),
-        'email'    => fake()->unique()->safeEmail(),
-        'address'  => fake()->address(),
-        'city'     => fake()->city(),
-        'zip_code' => fake()->randomNumber(),
-    ];
+    /** @test */
+    public function user_can_update_page_settings(): void
+    {
+        $settings = Setting::factory()->create();
+        $newData = [
+            'title'    => config('app.name'),
+            'email'    => fake()->unique()->safeEmail(),
+            'address'  => fake()->address(),
+            'city'     => fake()->city(),
+            'zip_code' => fake()->randomNumber(),
+        ];
 
-    patch(route('dashboard.settings.update', $settings), $newData);
-    $settings->refresh();
+        $this->patch(route('dashboard.settings.update', $settings), $newData);
+        $settings->refresh();
 
-    expect($settings)->title->toBe($newData['title'])->email->toBe($newData['email'])->address->toBe($newData['address'])->city->toBe($newData['city'])->zip_code->toBe($newData['zip_code']);
-});
+        $this->assertEquals($newData['title'], $settings->title);
+        $this->assertEquals($newData['email'], $settings->email);
+        $this->assertEquals($newData['address'], $settings->address);
+        $this->assertEquals($newData['city'], $settings->city);
+        $this->assertEquals($newData['zip_code'], $settings->zip_code);
+    }
+}
