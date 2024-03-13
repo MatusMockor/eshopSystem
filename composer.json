@@ -19,7 +19,6 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.4",
-        "pestphp/pest": "^1.23",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
