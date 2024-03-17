@@ -17,6 +17,11 @@ class Login extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ip_address',
+        'user_agent',
+    ];
+
     protected function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

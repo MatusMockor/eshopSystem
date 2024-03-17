@@ -12,6 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->timestamps();
+            $table->string('ip_address')->nullable();
+            $table->string('user_agent')->nullable();
         });
     }
 
