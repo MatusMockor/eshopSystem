@@ -4,6 +4,7 @@ namespace Tests\Feature\Setting;
 
 use App\Models\Setting;
 use App\Models\User;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PageSettingManagementTest extends TestCase
@@ -14,7 +15,7 @@ class PageSettingManagementTest extends TestCase
         $this->be(User::factory()->create());
     }
 
-    /** @test */
+    #[Test]
     public function user_can_update_page_settings(): void
     {
         $settings = Setting::factory()->create();

@@ -3,11 +3,12 @@
 namespace Tests\Feature\Auth;
 
 use App\Providers\RouteServiceProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function registration_screen_can_be_rendered(): void
     {
         $response = $this->get('/register');

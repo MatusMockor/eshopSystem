@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ProductManagementTest extends TestCase
@@ -19,7 +20,7 @@ class ProductManagementTest extends TestCase
         $this->be(User::factory()->create());
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_create_new_product(): void
     {
         $category = Category::factory()->create();
@@ -34,7 +35,7 @@ class ProductManagementTest extends TestCase
         $this->assertEquals(1, Product::count());
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_update_the_product(): void
     {
         $product = Product::factory()->create();
@@ -54,7 +55,7 @@ class ProductManagementTest extends TestCase
         $this->assertEquals($newName, $product->name);
     }
 
-    /** @test */
+    #[Test]
     public function slug_changed_when_admin_update_product_name(): void
     {
         $product = Product::factory()->create();
@@ -74,7 +75,7 @@ class ProductManagementTest extends TestCase
         $this->assertEquals(Str::slug($newName), $product->slug);
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_delete_product(): void
     {
         $product = Product::factory()->create();
@@ -84,7 +85,7 @@ class ProductManagementTest extends TestCase
         $this->assertNull(Product::firstWhere('id', $productId));
     }
 
-    /** @test */
+    #[Test]
     public function user_can_upload_images_for_product(): void
     {
         Storage::fake('public');
@@ -109,7 +110,7 @@ class ProductManagementTest extends TestCase
         Storage::disk('public')->assertExists($image->image_path);
     }
 
-    /** @test */
+    #[Test]
     public function user_can_not_create_product_without_category(): void
     {
         $this->post(route('dashboard.products.store'), [

@@ -5,18 +5,19 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PasswordResetTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function reset_password_link_screen_can_be_rendered(): void
     {
         $response = $this->get('/forgot-password');
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function reset_password_link_can_be_requested(): void
     {
         Notification::fake();
@@ -27,7 +28,7 @@ class PasswordResetTest extends TestCase
         Notification::assertSentTo($user, ResetPassword::class);
     }
 
-    /** @test */
+    #[Test]
     public function reset_password_screen_can_be_rendered(): void
     {
         Notification::fake();
@@ -43,7 +44,7 @@ class PasswordResetTest extends TestCase
         });
     }
 
-    /** @test */
+    #[Test]
     public function password_can_be_reset_with_valid_token(): void
     {
         Notification::fake();
