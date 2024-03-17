@@ -71,7 +71,7 @@ class User extends Authenticatable
     public function hasRole(array $roles): bool
     {
         $hasRole = array_filter($roles, function ($role) {
-            return in_array($role, Role::allRoles()) ?? false;
+            return in_array($role, Role::allRoles(), true) ?? false;
         });
 
         return (bool) $hasRole;
